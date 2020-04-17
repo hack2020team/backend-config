@@ -13,7 +13,7 @@ spec:
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app.kubernetes.io/name: blog
+      app.kubernetes.io/name: pe-frontend
   strategy:
     rollingUpdate:
       maxUnavailable: 0
@@ -21,7 +21,7 @@ spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: blog
+        app.kubernetes.io/name: pe-frontend
     spec:
       containers:
         - image: samgiles/pe-fe:sha-41e5f07
