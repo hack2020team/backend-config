@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   labels:
     app.kubernetes.io/name: pe-frontend
-  annotations:
-    flux.weave.works/automated: "true"
   name: pe-frontend
 spec:
   minReadySeconds: 5
