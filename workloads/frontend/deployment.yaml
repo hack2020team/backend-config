@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - image: samgiles/pe-fe:sha-41e5f07
-          name: blog
+          name: pr-frontend
           imagePullPolicy: Always
           livenessProbe:
             exec:
