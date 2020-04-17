@@ -1,0 +1,6 @@
+namespace: youlearn
+resources:
+  - deployment.yaml
+  - ingress.yaml
+  - service.yaml
+

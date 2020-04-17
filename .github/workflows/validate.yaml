@@ -1,0 +1,21 @@
+on: [push, pull_request]
+name: validate
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Validate kustomizations
+        uses: stefanprodan/kube-tools@v1.4.0
+        with:
+          # https://github.com/fluxcd/flux/blob/master/docker/kubectl.version
+          kubectl: 1.15.9
+          # https://github.com/fluxcd/flux/blob/master/docker/kustomize.version
+          kustomize: 3.5.4
+          command: |
+            kustomize build . | kubeval --strict --ignore-missing-schemas
+      - name: Policies
+        uses: stefanprodan/kube-tools@v1.4.0
+        with:
+          command: |
+            kustomize build . | conftest test -p .github/policy -

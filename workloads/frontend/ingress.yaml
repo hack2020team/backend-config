@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: pe-frontend
+spec:
+  rules:
+  - host: youlearn.kontr.io
+    http:
+      paths:
+      - backend:
+          serviceName: pe-frontend
+          servicePort: 8080
+  tls:
+  - hosts:
+    -  youlearn.kontr.io
+    secretName: youlearn-frontend-prod-cert

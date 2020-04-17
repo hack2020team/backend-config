@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: pe-frontend
+  annotations:
+    flux.weave.works/automated: "true"
+  name: pe-frontend
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 60
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: blog
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: blog
+    spec:
+      containers:
+        - image: samgiles/pefe
+          name: blog
+          imagePullPolicy: Always
+          livenessProbe:
+            exec:
+              command:
+              - curl
+              - localhost:80
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          ports:
+          - containerPort: 80
+            name: http
+            protocol: TCP
+          readinessProbe:
+            exec:
+              command:
+              - curl
+              - localhost:80
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+
