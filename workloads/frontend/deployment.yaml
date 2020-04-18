@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   labels:
     app.kubernetes.io/name: pe-frontend
+  annotations: 
+    fluxcd.io/automated: "true"
   name: pe-frontend
 spec:
   minReadySeconds: 5
