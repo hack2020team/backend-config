@@ -25,7 +25,7 @@ spec:
         linkerd.io/inject: enabled
         prometheus.io/scrape: "false"
       labels:
-        app: yl-headpose
+        app.kubernetes.io/name: yl-headpose
     spec:
       containers:
       - image: samgiles/hp-service
