@@ -10,7 +10,7 @@ spec:
       $setElementOrder/containers:
       - name: pr-frontend
       containers:
-      - image: samgiles/pe-fe:sha-8241802
+      - image: samgiles/pe-fe:sha-c611bc3
         name: pr-frontend
 ---
 apiVersion: apps/v1
