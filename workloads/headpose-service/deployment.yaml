@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: yl-headpose
+  annotations: 
+    fluxcd.io/automated: "true"
+  name: yl-headpose
+  namespace: youlearn
+spec:
+  replicas: 4
+  minReadySeconds: 5
+  progressDeadlineSeconds: 60
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: yl-headpose
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+        prometheus.io/scrape: "false"
+      labels:
+        app: yl-headpose
+    spec:
+      containers:
+        image: samgiles/hp-service
+        imagePullPolicy: Always
+        name: yl-headpose
+        ports:
+        - containerPort: 50051
+          name: grpc
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "2"
+            memory: 2Gi
+          requests:
+            cpu: 500m
+            memory: 1Gi

@@ -2,3 +2,4 @@ namespace: youlearn
 bases:
   - ./workloads/frontend/
   - ./workloads/messaging-service/
+  - ./workloads/headpose-service/
