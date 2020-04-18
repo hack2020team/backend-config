@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: yl-messaging
+  annotations: 
+    fluxcd.io/automated: "true"
+  name: yl-messaging
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 60
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: yl-messaging
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: yl-messaging
+    spec:
+      containers:
+        - image: samgiles/yl-messaging:sha-542138c
+          name: yl-messaging
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 9999
+            name: http
+            protocol: TCP
