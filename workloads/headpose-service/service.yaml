@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/name: yl-headpose
   namespace: youlearn
 spec:
+  ServiceType: ClusterIP
   ports:
   - port: 50051
     targetPort: 50051
