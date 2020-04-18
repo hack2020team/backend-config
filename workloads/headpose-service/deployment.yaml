@@ -28,7 +28,7 @@ spec:
         app: yl-headpose
     spec:
       containers:
-        image: samgiles/hp-service
+      - image: samgiles/hp-service
         imagePullPolicy: Always
         name: yl-headpose
         ports:
