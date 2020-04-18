@@ -1,0 +1,14 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pe-frontend
+  namespace: youlearn
+spec:
+  template:
+    spec:
+      $setElementOrder/containers:
+      - name: pr-frontend
+      containers:
+      - image: samgiles/pe-fe:sha-b914702
+        name: pr-frontend
