@@ -12,3 +12,17 @@ spec:
       containers:
       - image: samgiles/pe-fe:sha-76025b7
         name: pr-frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yl-messaging
+  namespace: youlearn
+spec:
+  template:
+    spec:
+      $setElementOrder/containers:
+      - name: yl-messaging
+      containers:
+      - image: samgiles/yl-messaging:sha-6933aa7
+        name: yl-messaging
