@@ -10,5 +10,5 @@ spec:
       $setElementOrder/containers:
       - name: pr-frontend
       containers:
-      - image: samgiles/pe-fe:sha-fa80583
+      - image: samgiles/pe-fe:sha-1a05620
         name: pr-frontend
