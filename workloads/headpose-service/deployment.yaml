@@ -8,7 +8,7 @@ metadata:
   name: yl-headpose
   namespace: youlearn
 spec:
-  replicas: 2
+  replicas: 4
   minReadySeconds: 5
   progressDeadlineSeconds: 60
   revisionHistoryLimit: 5
