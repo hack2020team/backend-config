@@ -25,6 +25,9 @@ spec:
     spec:
       containers:
         - image: samgiles/yl-messaging:sha-542138c
+          env:
+          - name: HEADPOSE_SERVICE
+            value: http://yl-headpose.youlearn.cluster.svc.local:50051
           name: yl-messaging
           imagePullPolicy: Always
           ports:
