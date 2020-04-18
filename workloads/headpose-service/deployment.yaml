@@ -14,7 +14,7 @@ spec:
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app: yl-headpose
+      app.kubernetes.io/name: yl-headpose
   strategy:
     rollingUpdate:
       maxUnavailable: 0
